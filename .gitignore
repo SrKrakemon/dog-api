@@ -1,5 +1,9 @@
+# Librerias del proyecto
+.venv
+
 # Secretos
 config/
+
 
 # Archivos residuales de vim
 *.swp 

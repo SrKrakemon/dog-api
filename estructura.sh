@@ -2,14 +2,17 @@
 
   # Genera estructura de proyecto 
   
-  mkdir DEV 
   mkdir -p DEV/dog-api/
   mkdir -p DEV/dog-api/config/
   mkdir -p DEV/dog-api/templates/
   
-  touch DEV/dog-api/config/api-key.txt
-  touch DEV/dog-api/templates/index.html
+
+  cp api-key.txt DEV/dog-api/app.py
+  cp api-key.txt DEV/dog-api/config/api-key.txt
+  cd index.html DEV/dog-api/templates/index.html
   
+  cd DEV/dog-api
+
 
   
 
