@@ -6,13 +6,15 @@ Consume thedogapi y muestra salidas en sitio web con flask
 
 ## Estructura del proyecto
 
+```
   DEV
-  ├──dog-api
+  └──dog-api
      ├──app.py
      ├──config
      |  └──api-kei.txt
      └──templates
         └──index.txt 
+```
 
 ## Requisitos de instalación
   
