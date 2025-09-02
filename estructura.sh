@@ -13,7 +13,11 @@
   
   cd DEV/dog-api
 
+  # inicia entorno virtual y descarga las dependencias necesarias
 
+  python3.12 -m venv .venv
+  source .venv/bin/activate
+  pip install requests Flask
   
 
   
