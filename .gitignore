@@ -1,2 +1,5 @@
 # Secretos
-config/ 
+config/
+
+# Archivos residuales de vim
+*.swp 
