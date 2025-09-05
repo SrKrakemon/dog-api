@@ -1,8 +1,14 @@
+#Directorios
+
+#Directorio para el despliegue del proyecto
+DEV/
+
+#Archivos plr extencion
 # Librerias del proyecto
-.venv
+.venv/
 
 # Secretos
-config/
+config.py
 
 
 # Archivos residuales de vim

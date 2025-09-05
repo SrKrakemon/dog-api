@@ -1,31 +1,30 @@
-
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import requests
-import os
+from config import API_KEY, URL
 
 app = Flask(__name__)
 
-def leer_api_key():
-    """Lee la clave API desde un archivo protegido"""
-    ruta_archivo = os.path.join('config', 'api_key.txt')
-    try:
-        with open(ruta_archivo, 'r') as archivo:
-            return archivo.read().strip()
-    except FileNotFoundError:
-        raise Exception("El archivo de configuración no existe")
-
 @app.route('/')
 def index():
-    api_key = leer_api_key()
-
-    headers = {'x-api-key': api_key}
-    respuesta = requests.get('https://api.thedogapi.com/v1/images/search', headers=headers)
-
-    if respuesta.status_code == 200:
-        datos_perro = respuesta.json()[0]
-        return render_template('index.html', perro=datos_perro)
-    else:
-        return f'Error al obtener los datos: {respuesta.status_code}', 500
+    headers = {
+        'x-api-key': API_KEY
+    }
+    
+    try:
+        # lista 4 imagenes de perros de manera aleatoria
+        params = {'limit': 4}   
+        response = requests.get(URL, headers=headers, params=params)
+        
+        if response.status_code == 200:
+            dogs_data = response.json()
+            return render_template('index.html', dogs=dogs_data)
+        else:
+            error_message = f"API Error: {response.status_code}"
+            return render_template('error.html', error=error_message)
+            
+    except Exception as e:
+        error_message = f"Error fetching dog data: {str(e)}"
+        return render_template('error.html', error=error_message)
 
 if __name__ == '__main__':
-    app.run(debug=True)"
+    app.run(debug=True) 
